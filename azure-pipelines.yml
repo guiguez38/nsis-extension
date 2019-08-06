@@ -27,3 +27,4 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'tfx extension create --manifest-globs vss-extension.json'
+    workingDirectory: '/home/vsts/work/1/s'
