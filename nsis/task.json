@@ -78,7 +78,7 @@
         },
         {
             "name": "includeCustomPluginsPath",
-            "type": "string",
+            "type": "filePath",
             "label": "Custom Plugins Path",
             "defaultValue": "",
             "helpMarkDown": "If you want include additional plugins that aren't in our defualt directory, you could specify your plugin directory so your plugins will copied and used into NSIS process. This will work with plugins/x86-ansi",
