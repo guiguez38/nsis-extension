@@ -15,7 +15,7 @@
     ],
     "description": "Tasks for running Nsis scripts to produce installers.",
     "categories": [
-        "Build and release"
+        "Azure Pipelines"
     ],
     "repository": {
         "type": "git",
