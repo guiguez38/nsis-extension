@@ -1,11 +1,7 @@
-# Looking for someone to maintain this project
+# New support for this project
 
-Hi, I'm looking for someone to take over this project as I no longer have time to dedicate to it.
-
-If you would like to do so, please contact me via an issue, make a fork and do your first change.
-I can help you set up the CI and indicate on this README who is maintaining the project (name & url).
-
--------------------------------------------------------------
+Since [tomap](https://github.com/tomap) has no longer have time to dedicate to it, we have forked the project in order to maintain it.
+This repo has been forked from https://github.com/tomap/nsis-extension
 
 # VSTS Extension
 
@@ -22,7 +18,9 @@ This extension can be used to build nsis script or to make nsis available for ot
 * Either select your nsi script (and build arguments: http://nsis.sourceforge.net/Docs/Chapter3.html#usagereference)
 * Or just include NSIS as an environnement variable called NSIS_EXE that you can use in the following tasks.
 
-There is also an option called "Include additional plugins". If you check this option, the content of the folder [nsis/plugins](../master/nsis/plugins/) will be copied to the nsis plugin folder and thos plugins will be made available to you nsis script.
+There is also an option called "Include additional plugins". If you check this option, the content of the folder [nsis/plugins](../master/nsis/plugins/) will be copied to the nsis plugin folder and those plugins will be made available to your nsis script.
+
+There is another option called "Custom Plugins Path". If you set a path on this field, the content of the referenced folder will be copied to the nsis plugin folder and those plugins will be made available to your nsis script.
 
 To test that the task works properly, you can download [install.nsi](../master/install.nsi) and use it as a test script.
 
@@ -57,13 +55,22 @@ services2::SendServiceCommandWait "start" "w3wp" "120"
 
 # Availability
 
-This extension is publicly available on VSTS Marketplace: https://marketplace.visualstudio.com/items?itemName=ThomasP.nsis-task
+This extension is publicly available on VSTS Marketplace: https://marketplace.visualstudio.com/items?itemName=bizeta.nsis-task
 
-It is build in VSTS using VSTS Developer Tools Build Task (https://marketplace.visualstudio.com/items?itemName=ms-devlabs.vsts-developer-tools-build-tasks).
-Here is the status: ![Build status](https://tomap.visualstudio.com/_apis/public/build/definitions/6d190468-0f5e-4624-9d49-8446c00b4b51/1/badge)
+It is build in VSTS using DevOps.
+Here is the status: ![Build status](https://maximaretail.visualstudio.com/OneStore/_apis/build/status/DevOps%20extensions/dev-maxima.nsis-extension?branchName=master)
 
-The build number is automatically incremented on each commit by the VSTS Build task by a pattern like "0.2.$(Build.BuildId)". See https://www.visualstudio.com/en-us/docs/build/define/variables#predefined-variables for reference.
+The build is done following the build steps on [Microsoft documentation page](https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node?view=azure-devops)
 
 # License
 
-This extension is published under MIT license. See [license file](../master/LICENSE).
+This extension is published under MIT license. See [license file](../master/license).
+
+# Changelog
+All notable changes to this project will be documented in this file.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+
+## [1.1.2] - 2019-08-06
+### Added
+- new plugin option "__Custom Plugins Path__" to be able to include custom plugins path in order to be able to use custom plugins that aren't included on default plugins folder.
+All plugins file in this path will be copied to nsis\plugins\x86-ansi
