@@ -2,7 +2,8 @@ param(
     [string]$scriptFile,
     [string]$justInclude,
     [string]$arguments,
-	[string]$includeMorePlugins
+    [string]$includeMorePlugins,
+    [string]$includeCustomPluginsPath
 )
 
 foreach($key in $PSBoundParameters.Keys)
@@ -32,8 +33,15 @@ if(!(Test-Path $destination)){
 		$pluginPath = $path + "\plugins\*"
 		$pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
 		Copy-Item $pluginPath $pluginOutput -force
+    }
+    
+	if(-Not ([string]::IsNullOrEmpty($includeCustomPluginsPath)))
+	{
+		$pluginPath = $includeCustomPluginsPath + "\*"
+		$pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+		Copy-Item $pluginPath $pluginOutput -force
 	}
-	
+    
     Write-Output "Time taken (Unzip): $((Get-Date).Subtract($start_time).Seconds) second(s)"
 } else {
 	$directories = Get-ChildItem -Path $destination
