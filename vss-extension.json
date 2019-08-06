@@ -24,8 +24,8 @@
     "badges": [
         {
             "href": "https://github.com/dev-maxima/nsis-extension",
-            "uri": "https://tomap.visualstudio.com/_apis/public/build/definitions/6d190468-0f5e-4624-9d49-8446c00b4b51/1/badge",
-            "description": "VSTS Build Status"
+            "uri": "https://maximaretail.visualstudio.com/OneStore/_apis/build/status/DevOps%20extensions/dev-maxima.nsis-extension?branchName=master",
+            "description": "DevOps Build Status"
         }
     ],
     "content": {
