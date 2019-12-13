@@ -25,9 +25,11 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'npm i -g tfx-cli'
-- task: CmdLine@2
+- task: PowerShell@2
   inputs:
-    script: 'Install-Module -Name VstsTaskSdk'
+    targetType: 'inline'
+    script: |
+      Install-Module -Name VstsTaskSdk'
 - task: CopyFiles@2
   inputs:
     sourceFolder: '/home/vsts/work/1/s/**/VstsTaskSdk'
