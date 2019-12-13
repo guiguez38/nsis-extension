@@ -1,7 +1,7 @@
 # New support for this project
 
-Since [tomap](https://github.com/tomap) has no longer have time to dedicate to it, we have forked the project in order to maintain it.
-This repo has been forked from https://github.com/tomap/nsis-extension
+Since [tomap](https://github.com/tomap) has no longer time to dedicate to it, we have forked the project in order to maintain it.
+This repo has been forked from github repository https://github.com/tomap/nsis-extension
 
 # VSTS Extension
 
