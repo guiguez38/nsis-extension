@@ -26,9 +26,7 @@ steps:
     script: 'npm i -g tfx-cli'
 - task: NuGetCommand@2
   inputs:
-    restore: VstsTaskSdk
-    majorVersion: 0
-    minorVersion: 11
+    command: restore
     restoreDirectory: '/home/vsts/work/1/s/ps_modules/'
 - task: CopyFiles@2
   inputs:
