@@ -25,18 +25,12 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'npm i -g tfx-cli'
-- task: NuGetToolInstaller@1
+- task: CmdLine@2
   inputs:
-    versionSpec: 
-    checkLatest: true
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/packages.config'
-    restoreDirectory: '/home/vsts/work/1/s/ps_modules/'
+    script: 'Install-Module -Name VstsTaskSdk'
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '/home/vsts/work/1/s/ps_modules/**/VstsTaskSdk'
+    sourceFolder: '/home/vsts/work/1/s/**/VstsTaskSdk'
     targetFolder: '/home/vsts/work/1/s/nsis/ps_modules/VstsTaskSdk'
 - task: CmdLine@2
   inputs:
