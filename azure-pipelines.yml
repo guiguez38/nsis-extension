@@ -1,5 +1,4 @@
 # Starter pipeline
-
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -29,7 +28,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Install-Module -Name VstsTaskSdk'
+      Install-Module -Name VstsTaskSdk
 - task: CopyFiles@2
   inputs:
     sourceFolder: '/home/vsts/work/1/s/**/VstsTaskSdk'
