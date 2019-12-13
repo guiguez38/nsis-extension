@@ -9,7 +9,7 @@
     "version": {
         "Major": 1,
         "Minor": 1,
-        "Patch": 2
+        "Patch": 7
     },
     "links": {
         "home": {
@@ -87,7 +87,7 @@
 
     ],
     "execution": {
-        "PowerShell": {
+        "PowerShell3": {
             "target": "$(currentDirectory)\\Nsis.ps1",
             "argumentFormat": "",
             "workingDirectory": "",
