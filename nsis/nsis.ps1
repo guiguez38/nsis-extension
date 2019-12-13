@@ -1,10 +1,9 @@
-param(
-    [string]$scriptFile,
-    [string]$justInclude,
-    [string]$arguments,
-    [string]$includeMorePlugins,
-    [string]$includeCustomPluginsPath
-)
+$scriptFile = Get-VstsInput -Name scriptFile -Require;
+$justInclude = Get-VstsInput -Name justInclude -Require;
+$arguments = Get-VstsInput -Name arguments -Require;
+$includeMorePlugins = Get-VstsInput -Name includeMorePlugins -Require;
+$includeCustomPluginsPath = Get-VstsInput -Name includeCustomPluginsPath -Require;
+
 
 foreach($key in $PSBoundParameters.Keys)
 {
@@ -71,7 +70,7 @@ if($justInclude -eq "no")
 
     Write-Host("Executing nsis $nsis3Exe with args: $args")
 
-    Invoke-Tool -Path $nsis3Exe -Arguments $args
+    Invoke-VstsTool -FileName $nsis3Exe -Arguments $args -RequireExitCodeZero
 }
 else
 {
