@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -24,9 +25,14 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'npm i -g tfx-cli'
+- task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: 
+    checkLatest: true
 - task: NuGetCommand@2
   inputs:
-    command: restore
+    command: 'restore'
+    restoreSolution: '**/packages.config'
     restoreDirectory: '/home/vsts/work/1/s/ps_modules/'
 - task: CopyFiles@2
   inputs:
