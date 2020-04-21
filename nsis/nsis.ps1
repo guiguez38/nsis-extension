@@ -26,25 +26,25 @@ if(!(Test-Path $destination)){
 
 	$directories = Get-ChildItem -Path $destination
 	$nsis3Directory = $directories[0].FullName
-
-	if($includeMorePlugins -eq "yes")
-	{
-		$pluginPath = $path + "\plugins\*"
-		$pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
-		Copy-Item $pluginPath $pluginOutput -force
-    }
-    
-	if(-Not ([string]::IsNullOrEmpty($includeCustomPluginsPath)))
-	{
-		$pluginPath = $includeCustomPluginsPath + "\*"
-		$pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
-		Copy-Item $pluginPath $pluginOutput -force
-	}
     
     Write-Output "Time taken (Unzip): $((Get-Date).Subtract($start_time).Seconds) second(s)"
 } else {
 	$directories = Get-ChildItem -Path $destination
 	$nsis3Directory = $directories[0].FullName
+}
+
+if($includeMorePlugins -eq "yes")
+{
+	$pluginPath = $path + "\plugins\*"
+	$pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+	Copy-Item $pluginPath $pluginOutput -force
+}
+    
+if(-Not ([string]::IsNullOrEmpty($includeCustomPluginsPath)))
+{
+	$pluginPath = $includeCustomPluginsPath + "\*"
+	$pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+	Copy-Item $pluginPath $pluginOutput -force
 }
 
 $nsis3Exe = $nsis3Directory + "\makensis.exe"
