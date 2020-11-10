@@ -34,8 +34,15 @@ else {
 }
 
 if ($includeMorePlugins -eq "yes") {
-    $pluginPath = $path + "\plugins\*"
+
+    # Copy ansi plugin folder
+    $pluginPath = $path + "\plugins\x86-ansi\*"
     $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+    Copy-Item $pluginPath $pluginOutput -force
+
+    # Copy unicode plugin folder
+    $pluginPath = $path + "\plugins\x86-unicode\*"
+    $pluginOutput = $nsis3Directory + "\plugins\x86-unicode"
     Copy-Item $pluginPath $pluginOutput -force
 }
     
