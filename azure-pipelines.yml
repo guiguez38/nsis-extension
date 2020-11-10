@@ -24,16 +24,15 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'npm i -g tfx-cli'
-- task: NuGetCommand@2
+- task: PowerShell@2
   inputs:
-    restore: VstsTaskSdk
-    majorVersion: 0
-    minorVersion: 11
-    restoreDirectory: '/home/vsts/work/1/s/ps_modules/'
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: '/home/vsts/work/1/s/ps_modules/**/VstsTaskSdk'
-    targetFolder: '/home/vsts/work/1/s/nsis/ps_modules/VstsTaskSdk'
+    targetType: 'inline'
+    script: |
+      Install-Module -Name VstsTaskSdk -Force
+# - task: CopyFiles@2
+#   inputs:
+#     sourceFolder: '/home/vsts/work/1/s/**/VstsTaskSdk'
+#     targetFolder: '/home/vsts/work/1/s/nsis/ps_modules/VstsTaskSdk'
 - task: CmdLine@2
   inputs:
     script: 'tfx extension create --manifest-globs vss-extension.json'
