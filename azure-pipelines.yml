@@ -36,7 +36,7 @@ steps:
 #       Get-Module -ListAvailable
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '/home/vsts/.local/share/powershell/Modules/VstsTaskSdk'
+    sourceFolder: '/home/vsts/.local/share/powershell/Modules/VstsTaskSdk/0.11.0'
     targetFolder: '/home/vsts/work/1/s/nsis/ps_modules/VstsTaskSdk'
 - task: CmdLine@2
   inputs:
