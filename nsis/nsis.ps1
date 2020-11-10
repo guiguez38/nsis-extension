@@ -40,9 +40,30 @@ if ($includeMorePlugins -eq "yes") {
 }
     
 if (-Not ([string]::IsNullOrEmpty($includeCustomPluginsPath))) {
-    $pluginPath = $includeCustomPluginsPath + "\*"
-    $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
-    Copy-Item $pluginPath $pluginOutput -force
+
+    $hasAnsiPath = Test-Path $includeCustomPluginsPath + '\x86-ansi';
+    $hasUnicodePath = Test-Path $includeCustomPluginsPath + '\x86-unicode';
+    
+    # Has ansi plugin folder, copy in appropriate out folder
+    if ($hasAnsiPath) {
+        $pluginPath = $includeCustomPluginsPath + "\x86-ansi\*"
+        $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+        Copy-Item $pluginPath $pluginOutput -force
+    }
+    
+    # Has unicode plugin folder, copy in appropriate out folder
+    if ($hasUnicodePath) {
+        $pluginPath = $includeCustomPluginsPath + "\x86-unicode\*"
+        $pluginOutput = $nsis3Directory + "\plugins\x86-unicode"
+        Copy-Item $pluginPath $pluginOutput -force
+    }
+
+    # No ansi/unicode path provided, interpret it as ansi to be backward compatible
+    if (-Not $hasAnsiPath -and -Not $hasUnicodePath) {
+        $pluginPath = $includeCustomPluginsPath + "\*"
+        $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+        Copy-Item $pluginPath $pluginOutput -force
+    }
 }
 
 $nsis3Exe = $nsis3Directory + "\makensis.exe"
