@@ -1,12 +1,18 @@
 $scriptFile = Get-VstsInput -Name scriptFile -Require;
 $justInclude = Get-VstsInput -Name justInclude -Require;
-$arguments = Get-VstsInput -Name arguments -Require;
+$arguments = Get-VstsInput -Name arguments;
 $includeMorePlugins = Get-VstsInput -Name includeMorePlugins -Require;
 $includeCustomPluginsPath = Get-VstsInput -Name includeCustomPluginsPath -Require;
 
 
 foreach ($key in $PSBoundParameters.Keys) {
     Write-Host ($key + ' = ' + $PSBoundParameters[$key])
+}
+
+if ($justInclude -eq "no" -and -not $PSBoundParameters.ContainsKey('arguments'))
+{
+    Write-Error("##[error]Required: 'arguments' input when justInclude = 'no' is specified")
+    exit
 }
 
 $path = split-path $MyInvocation.MyCommand.Path
