@@ -9,12 +9,6 @@ foreach ($key in $PSBoundParameters.Keys) {
     Write-Host ($key + ' = ' + $PSBoundParameters[$key])
 }
 
-if ($justInclude -eq "no" -and -not $PSBoundParameters.ContainsKey('arguments'))
-{
-    Write-Error("##[error]Required: 'arguments' input when justInclude = 'no' is specified")
-    exit
-}
-
 $path = split-path $MyInvocation.MyCommand.Path
 
 $output = $path + "\nsis.zip"
