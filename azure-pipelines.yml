@@ -29,10 +29,10 @@ steps:
     targetType: 'inline'
     script: |
       Install-Module -Name VstsTaskSdk -Force
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: '/home/vsts/work/1/s/**/VstsTaskSdk'
-    targetFolder: '/home/vsts/work/1/s/nsis/ps_modules/VstsTaskSdk'
+# - task: CopyFiles@2
+#   inputs:
+#     sourceFolder: '/home/vsts/work/1/s/**/VstsTaskSdk'
+#     targetFolder: '/home/vsts/work/1/s/nsis/ps_modules/VstsTaskSdk'
 - task: CmdLine@2
   inputs:
     script: 'tfx extension create --manifest-globs vss-extension.json'
