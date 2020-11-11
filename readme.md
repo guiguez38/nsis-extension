@@ -112,5 +112,9 @@ All plugins file in this path will be copied to nsis\plugins\x86-ansi
 ## [1.1.9] - 2020-11-10
 ### Fixes
 - Ensure parameter `arguments` is not required when parameter `justInclude=yes` [Issue #4](https://github.com/development-bizeta-mestre/nsis-extension/issues/4)
-- Provide x86-unicode plugins along with x86-ansi [Issue #7](https://github.com/development-bizeta-mestre/nsis-extension/issues/7)
 - Build pipeline not working [Issue #2](https://github.com/development-bizeta-mestre/nsis-extension/issues/2)
+- NSIS job fails when attempting to run [Issue #10](https://github.com/development-bizeta-mestre/nsis-extension/issues/10)
+
+## [2.0.0] - 2020-11-11
+### Added
+- Provide x86-unicode plugins along with x86-ansi [Issue #7](https://github.com/development-bizeta-mestre/nsis-extension/issues/7). to make this work, please select `version 2` of the task
