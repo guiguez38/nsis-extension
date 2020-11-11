@@ -25,7 +25,11 @@ There is also an option called `"Include additional plugins"`. If you check this
 
 ## Custom Plugins Path
 
-There is another option called `"Custom Plugins Path"`. If you set a path on this field, the content of the referenced folder will be copied to the NSIS plugin folder and those plugins will be made available to your NSIS script as follow.
+There is another option called `"Custom Plugins Path"`
+
+To enable this option, you must enable `Include custom plugins` flag.
+
+If you set a path on this field, the content of the referenced folder will be copied to the NSIS plugin folder and those plugins will be made available to your NSIS script as follow.
 
 ```
 <Custom-Plugins-Path>
