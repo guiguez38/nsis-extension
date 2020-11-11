@@ -92,7 +92,7 @@ services2::SendServiceCommandWait "start" "w3wp" "120"
 This extension is publicly available on VSTS Marketplace: https://marketplace.visualstudio.com/items?itemName=bizeta.nsis-task
 
 It is build in VSTS using DevOps.
-Here is the status: ![Build status](https://maximaretail.visualstudio.com/OneStore/_apis/build/status/DevOps%20extensions/dev-maxima.nsis-extension?branchName=master)
+Here is the status: [![Build Status](https://maximaretail.visualstudio.com/OneStore/_apis/build/status/DevOps%20extensions/development-bizeta-mestre.nsis-extension?branchName=master)](https://maximaretail.visualstudio.com/OneStore/_build/latest?definitionId=38&branchName=master)
 
 The build is done following the build steps on [Microsoft documentation page](https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node?view=azure-devops)
 
