@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "nsis-task",
     "name": "Nsis Build Task",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "publisher": "bizeta",
     "public": true,
     "icons": {

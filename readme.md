@@ -83,7 +83,7 @@ services2::SendServiceCommandWait "start" "w3wp" "120"
 ```
 
 * [AccessControl](https://nsis.sourceforge.io/AccessControl_plug-in) (ansi + unicode)  The AccessControl plugin for NSIS provides a set of functions related to Windows NT access control list (ACL) management.
-* [DotNetChecker](https://nsis.sourceforge.io/DotNetChecker_plug-in) (ansi + unicode)  .NET Framework Checker NSIS plugin is used to detect if the required .NET Framwork is installed
+* [DotNetChecker](https://github.com/tbnorris/NsisDotNetChecker) (ansi + unicode)  The .NET Framework Checker NSIS plugin is used to detect if the required .NET Framework is installed and if it is not - plugin will download and install the required package. The plugin's C++ source code is based on the work of Aaron Stebner.
 * [DumpLog](https://nsis.sourceforge.io/DumpLog_plug-in) (ansi + unicode) This plug-in will dump the log of the installer (installer details) to a file.
 * [FindProcDLL](https://nsis.sourceforge.io/FindProcDLL_plug-in) (ansi + unicode)  This plugin provides the ability to check if any process running just with the name of its .exe file
 * [KillProcDLL](https://nsis.sourceforge.io/KillProcDLL_plug-in) (ansi + unicode)  This NSIS DLL plug-in provides one function that has the ability to close any process running, without the need to have the 'class name' or 'window handle' you used to need when using the Windows API TerminateProcess or ExitProcess, just with the name of its .exe file.
