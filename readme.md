@@ -9,7 +9,7 @@ Nsis build extension for VSTS
 
 This extension can be used to build nsis script or to make nsis available for other tasks (as an environment variable).
 
-[Nsis](http://nsis.sourceforge.net/Main_Page) version used is version 3.03
+[Nsis](http://nsis.sourceforge.net/Main_Page) version used is version 3.08
 
 # Usage
 
@@ -122,3 +122,7 @@ All plugins file in this path will be copied to nsis\plugins\x86-ansi
 ## [2.0.0] - 2020-11-11
 ### Added
 - Provide x86-unicode plugins along with x86-ansi [Issue #7](https://github.com/development-bizeta-mestre/nsis-extension/issues/7). to make this work, please select `version 2` of the task
+
+## [2.0.3] - 2021-10-21
+### Added
+- Nsis version supported is version 3.08
