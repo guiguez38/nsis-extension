@@ -123,6 +123,6 @@ All plugins file in this path will be copied to nsis\plugins\x86-ansi
 ### Added
 - Provide x86-unicode plugins along with x86-ansi [Issue #7](https://github.com/development-bizeta-mestre/nsis-extension/issues/7). to make this work, please select `version 2` of the task
 
-## [2.0.3] - 2021-10-21
+## [3.0.0] - 2021-10-21
 ### Added
-- Nsis version supported is version 3.08
+- Updated nsis version to v3.08 [PR #16](https://github.com/development-bizeta-mestre/nsis-extension/pull/16). To make this work, please select `version 3` of the task.
