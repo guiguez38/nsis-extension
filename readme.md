@@ -126,3 +126,7 @@ All plugins file in this path will be copied to nsis\plugins\x86-ansi
 ## [3.0.0] - 2021-10-21
 ### Added
 - Updated nsis version to v3.08 [PR #16](https://github.com/development-bizeta-mestre/nsis-extension/pull/16). To make this work, please select `version 3` of the task.
+
+## [3.0.1] - 2022-07-06
+### Added
+- Fix $arguments option, set working directory

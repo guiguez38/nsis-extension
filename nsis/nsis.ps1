@@ -119,21 +119,23 @@ $env:NSIS_EXE = $nsis3Exe
 Write-Host("##vso[task.setvariable variable=NSIS_EXE;]$nsis3Exe")
 
 if ($justInclude -eq "no") {
-    $arguments = ''
+    $consolidatedArguments = ''
 
     if ($arguments -notcontains "/V") {
         if ($env:Debug -eq "true") {
-            $arguments += "/V4 "
+            $consolidatedArguments += "/V4 "
         }
         if ($env:Debug -eq "false") {
-            $arguments += "/V1 "
+            $consolidatedArguments += "/V1 "
         }
     }
-    $arguments += $arguments + ' "' + $scriptFile + '"'
+    $consolidatedArguments += $arguments + ' "' + $scriptFile + '"'
 
-    Write-Host("Executing nsis $nsis3Exe with arguments: $arguments")
+    $workingDir = Split-Path -Path $scriptFile;
 
-    Invoke-VstsTool -FileName $nsis3Exe -Arguments $arguments -RequireExitCodeZero
+    Write-Host("Executing nsis "$nsis3Exe" with :\r\n - arguments: $consolidatedArguments\r\n - $workingDir: $workingDir")
+
+    Invoke-VstsTool -WorkingDirectory $workingDir -FileName $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
 }
 else {
     Write-Host("Including nsis in variable NSIS_EXE: $nsis3Exe")
