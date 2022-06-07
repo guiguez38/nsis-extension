@@ -39,18 +39,18 @@ else {
 
 if ($includeMorePlugins -eq "yes") {
 
-    ## # Copy ansi plugin folder
-    ## $pluginPath = $path + "\plugins\x86-ansi\*"
-    ## $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
-    ## Copy-Item $pluginPath $pluginOutput -force
-    ## 
-    ## Write-Output "[includeMorePlugins] dump '$pluginOutput':"
-    ## Get-ChildItem $pluginOutput
-    ## Write-Host "" # write new line
+    # Copy ansi plugin folder
+    $pluginPath = $path + "\plugins\x86-ansi\*"
+    $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+    Copy-Item $pluginPath $pluginOutput -force
+
+    Write-Output "[includeMorePlugins] dump '$pluginOutput':"
+    Get-ChildItem $pluginOutput
+    Write-Host "" # write new line
 
     # Copy unicode plugin folder
     $pluginPath = $path + "\plugins\x86-unicode\*"
-    $pluginOutput = $nsis3Directory + "\plugins"
+    $pluginOutput = $nsis3Directory + "\plugins\x86-unicode"
     Copy-Item $pluginPath $pluginOutput -force
 
     Write-Output "[includeMorePlugins] dump '$pluginOutput':"
@@ -61,30 +61,30 @@ Write-Host "" # write new line
 
 if ($includeCustomPlugins -eq "yes") {
     
-    ## $customAnsiPath = $includeCustomPluginsPath + '\x86-ansi';
-    ## $hasAnsiPath = Test-Path $customAnsiPath;
+    $customAnsiPath = $includeCustomPluginsPath + '\x86-ansi';
+    $hasAnsiPath = Test-Path $customAnsiPath;
     $customUnicodePath = $includeCustomPluginsPath + '\x86-unicode';
     $hasUnicodePath = Test-Path $customUnicodePath;
     
     # Has ansi plugin folder, copy in appropriate out folder
-    ## if ($hasAnsiPath) {
-    ##     $pluginPath = $customAnsiPath + "\*"
-    ##     $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
-    ##     
-    ##     Write-Output "[includeCustomPluginsPath - x86-ansi detected] dump '$pluginPath':"
-    ##     Get-ChildItem $pluginPath
-    ##     
-    ##     Copy-Item $pluginPath $pluginOutput -force
-    ## 
-    ##     Write-Output "[includeCustomPluginsPath] dump '$pluginOutput':"
-    ##     Get-ChildItem $pluginOutput
-    ##     Write-Host "" # write new line
-    ## }
+    if ($hasAnsiPath) {
+        $pluginPath = $customAnsiPath + "\*"
+        $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+        
+        Write-Output "[includeCustomPluginsPath - x86-ansi detected] dump '$pluginPath':"
+        Get-ChildItem $pluginPath
+        
+        Copy-Item $pluginPath $pluginOutput -force
+
+        Write-Output "[includeCustomPluginsPath] dump '$pluginOutput':"
+        Get-ChildItem $pluginOutput
+        Write-Host "" # write new line
+    }
     
     # Has unicode plugin folder, copy in appropriate out folder
     if ($hasUnicodePath) {
         $pluginPath = $customUnicodePath + "\*"
-        $pluginOutput = $nsis3Directory + "\plugins"
+        $pluginOutput = $nsis3Directory + "\plugins\x86-unicode"
         
         Write-Output "[includeCustomPluginsPath - x86-unicode detected] dump '$pluginPath':"
         Get-ChildItem $pluginPath
@@ -96,20 +96,20 @@ if ($includeCustomPlugins -eq "yes") {
         Write-Host "" # write new line
     }
 
-    ## # No ansi/unicode path provided, interpret it as ansi to be backward compatible
-    ## if (-Not $hasAnsiPath -and -Not $hasUnicodePath) {
-    ##     $pluginPath = $includeCustomPluginsPath + "\*"
-    ##     $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
-    ##     
-    ##     Write-Output "[includeCustomPluginsPath - no x86-ansi no x86-unicode detected - fallback to x86-ansi] dump '$pluginPath':"
-    ##     Get-ChildItem $pluginPath
-    ## 
-    ##     Copy-Item $pluginPath $pluginOutput -force
-    ## 
-    ##     Write-Output "[includeCustomPluginsPath] dump '$pluginOutput':"
-    ##     Get-ChildItem $pluginOutput
-    ##     Write-Host "" # write new line
-    ## }
+    # No ansi/unicode path provided, interpret it as ansi to be backward compatible
+    if (-Not $hasAnsiPath -and -Not $hasUnicodePath) {
+        $pluginPath = $includeCustomPluginsPath + "\*"
+        $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
+        
+        Write-Output "[includeCustomPluginsPath - no x86-ansi no x86-unicode detected - fallback to x86-ansi] dump '$pluginPath':"
+        Get-ChildItem $pluginPath
+
+        Copy-Item $pluginPath $pluginOutput -force
+
+        Write-Output "[includeCustomPluginsPath] dump '$pluginOutput':"
+        Get-ChildItem $pluginOutput
+        Write-Host "" # write new line
+    }
 }
 Write-Host "" # write new line
 
@@ -131,11 +131,12 @@ if ($justInclude -eq "no") {
     }
     $consolidatedArguments += $arguments + ' "' + $scriptFile + '"'
 
-    $workingDir = Split-Path -Path $scriptFile;
+    #$workingDir = Split-Path -Path $scriptFile;
+    #Write-Host("Executing nsis '$nsis3Exe' with : `r`n - arguments: '$consolidatedArguments' `r`n - workingDir: $workingDir")
+    #Invoke-VstsTool -WorkingDirectory $workingDir -FileName $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
 
-    Write-Host("Executing nsis '$nsis3Exe' with : `r`n - arguments: '$consolidatedArguments' `r`n - workingDir: $workingDir")
-
-    Invoke-VstsTool -WorkingDirectory $workingDir -FileName $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
+    Write-Host("Executing nsis '$nsis3Exe' with : `r`n - arguments: '$consolidatedArguments'")
+    Invoke-VstsTool -WorkingDirectory $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
 }
 else {
     Write-Host("Including nsis in variable NSIS_EXE: $nsis3Exe")
