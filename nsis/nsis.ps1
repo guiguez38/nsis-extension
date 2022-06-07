@@ -133,7 +133,7 @@ if ($justInclude -eq "no") {
 
     $workingDir = Split-Path -Path $scriptFile;
 
-    Write-Host("Executing nsis "$nsis3Exe" with :\r\n - arguments: $consolidatedArguments\r\n - workingDir: $workingDir")
+    Write-Host("Executing nsis '$nsis3Exe' with : `r`n - arguments: '$consolidatedArguments' `r`n - workingDir: $workingDir")
 
     Invoke-VstsTool -WorkingDirectory $workingDir -FileName $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
 }
