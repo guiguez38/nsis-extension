@@ -127,7 +127,7 @@ All plugins file in this path will be copied to nsis\plugins\x86-ansi
 ### Added
 - Updated nsis version to v3.08 [PR #16](https://github.com/development-bizeta-mestre/nsis-extension/pull/16). To make this work, please select `version 3` of the task.
 
-## [3.0.5] - 2022-07-06
+## [3.0.6] - 2022-07-06
 ### Added
 - Fix $arguments option
 - Set vsts task working directory as script's directory

@@ -136,7 +136,7 @@ if ($justInclude -eq "no") {
     #Invoke-VstsTool -WorkingDirectory $workingDir -FileName $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
 
     Write-Host("Executing nsis '$nsis3Exe' with : `r`n - arguments: '$consolidatedArguments'")
-    Invoke-VstsTool -WorkingDirectory $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
+    Invoke-VstsTool $nsis3Exe -Arguments $consolidatedArguments -RequireExitCodeZero
 }
 else {
     Write-Host("Including nsis in variable NSIS_EXE: $nsis3Exe")
