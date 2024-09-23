@@ -87,6 +87,9 @@ services2::SendServiceCommandWait "start" "w3wp" "120"
 * [DumpLog](https://nsis.sourceforge.io/DumpLog_plug-in) (ansi + unicode) This plug-in will dump the log of the installer (installer details) to a file.
 * [FindProcDLL](https://nsis.sourceforge.io/FindProcDLL_plug-in) (ansi + unicode)  This plugin provides the ability to check if any process running just with the name of its .exe file
 * [KillProcDLL](https://nsis.sourceforge.io/KillProcDLL_plug-in) (ansi + unicode)  This NSIS DLL plug-in provides one function that has the ability to close any process running, without the need to have the 'class name' or 'window handle' you used to need when using the Windows API TerminateProcess or ExitProcess, just with the name of its .exe file.
+* [MSSQL OLEDB](https://nsis.sourceforge.io/MSSQL_OLEDB_plug-in) (ansi + unicode)  The MSSQL OLEDB plugin for NSIS provides some functions to add MSSQL interoperability within an install script.
+* [NsProcess](https://nsis.sourceforge.io/NsProcess_plugin) (ansi + unicode) Find and close/kill process.
+* [NsisXML](https://nsis.sourceforge.io/NsisXML_plug-in_(by_Wizou)) (ansi + unicode) Small NSIS plugin to manipulate XML data through MSXML.
 * [services](https://nsis.sourceforge.io/Services_plug-in) (ansi only) Collection of functions that can be used from an NSIS script (Nullsoft Installation System, to manipulate Windows NT (and hopefully 2000 and XP) Services
 * [ToolTips](https://nsis.sourceforge.io/ToolTips_plug-in) (ansi only) Plugin that will display a custom tooltip (modern or classic) in the user selected control.
 * [UserMgr](https://nsis.sourceforge.io/UserMgr_plug-in) (ansi + unicode)  Plugin to create Windows User accounts and permissions
@@ -131,3 +134,9 @@ All plugins file in this path will be copied to nsis\plugins\x86-ansi
 ### Added
 - Fix $arguments option
 - Set vsts task working directory as script's directory
+
+## [3.0.8] - 2024-09-23
+### Added
+- Update NSIS to 3.10
+- Fix issue with SimpleSC plugin in unicode
+- Add some plugins with 'include' folder associated to it to work in x86 and Unicode

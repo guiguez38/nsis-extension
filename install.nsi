@@ -10,6 +10,8 @@
 
 !include "MUI.nsh"
 
+Unicode true
+
 ;---------------------------------
 ;General
  

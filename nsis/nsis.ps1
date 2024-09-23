@@ -39,6 +39,15 @@ else {
 
 if ($includeMorePlugins -eq "yes") {
 
+    # Copy include folder
+    $pluginPath = $path + "\include\*"
+    $pluginOutput = $nsis3Directory + "\include"
+    Copy-Item $pluginPath $pluginOutput -force
+
+    Write-Output "[includeMorePlugins] dump '$pluginOutput':"
+    Get-ChildItem $pluginOutput
+    Write-Host "" # write new line
+
     # Copy ansi plugin folder
     $pluginPath = $path + "\plugins\x86-ansi\*"
     $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
@@ -61,11 +70,29 @@ Write-Host "" # write new line
 
 if ($includeCustomPlugins -eq "yes") {
     
+    $customIncludePath = $includeCustomPluginsPath + '\include';
+    $hasIncludePath = Test-Path $customIncludePath;
     $customAnsiPath = $includeCustomPluginsPath + '\x86-ansi';
     $hasAnsiPath = Test-Path $customAnsiPath;
     $customUnicodePath = $includeCustomPluginsPath + '\x86-unicode';
     $hasUnicodePath = Test-Path $customUnicodePath;
     
+    
+    # Has include folder, copy in appropriate out folder
+    if ($hasIncludePath) {
+        $pluginPath = $customIncludePath + "\*"
+        $pluginOutput = $nsis3Directory + "\include"
+        
+        Write-Output "[includeCustomPluginsPath - include detected] dump '$pluginPath':"
+        Get-ChildItem $pluginPath
+        
+        Copy-Item $pluginPath $pluginOutput -force
+
+        Write-Output "[includeCustomPluginsPath] dump '$pluginOutput':"
+        Get-ChildItem $pluginOutput
+        Write-Host "" # write new line
+    }
+
     # Has ansi plugin folder, copy in appropriate out folder
     if ($hasAnsiPath) {
         $pluginPath = $customAnsiPath + "\*"
@@ -97,7 +124,7 @@ if ($includeCustomPlugins -eq "yes") {
     }
 
     # No ansi/unicode path provided, interpret it as ansi to be backward compatible
-    if (-Not $hasAnsiPath -and -Not $hasUnicodePath) {
+    if (-Not $hasIncludePath -and -Not $hasAnsiPath -and -Not $hasUnicodePath) {
         $pluginPath = $includeCustomPluginsPath + "\*"
         $pluginOutput = $nsis3Directory + "\plugins\x86-ansi"
         
